@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Personalized Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #eeeeee;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="instructions">
+    <p>Enter your personal details and press the link to download the Word document and open your e-mail client.</p>
+    <p>Once the email client opens, you'll want to press the attachment button and attach the testimony document that just downloaded.</p>
+    <p>Review the document, the subject, and the message. You can edit or delete them if you want to.</p>
+    <p>When you are satisfied, tap on the send button to send your e-mail to the committee.</p>
+</div>
+
+<div class="form-container">
+    <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="streetAddress">Street Address:</label>
+        <input type="text" id="streetAddress" name="streetAddress" required>
+    </div>
+    <div class="form-group">
+        <label for="address">City, State and Zip Code:</label>
+        <input type="text" id="address" name="address" required>
+    </div>
+
+    <button onclick="generateWordDocument()">Send Email</button>
+</div>
+
+<script src="https://unpkg.com/docx@latest"></script>
+
+<script>
+function generateWordDocument() {
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const streetAddress =  document.getElementById("streetAddress").value.trim();
+    if (!firstName || !lastName || !address || !streetAddress) {
+        alert("Please fill in all the fields.");
+        return;
+    }
+
+     const paragraphs = [
+        "_FIRSTNAME_ _LASTNAME_\n\n_STREETADDRESS_\n_ADDRESS_\n\n_DATE_\n\nDears,\nI am writing to express my concern regarding the proposed flavor ban on ecigarettes. As a constituent of Minnesota, I urge you to reconsider supporting such a ban. While I understand the intention behind it to address concerns about youth vaping I believe there are better solutions that can achieve the desired outcome without infringing on the rights of responsible adult users and harming small businesses.\nFirstly, banning flavored ecigarettes could have unintended consequences, including pushing adult smokers back to traditional cigarettes, which are widely acknowledged as far more harmful to health. Flavors play a crucial role in helping adults transition away from combustible tobacco products. Studies have shown that flavors are a significant factor in the success of smoking cessation efforts, making it easier for smokers to quit by providing an alternative that is both satisfying and enjoyable.\nFurthermore, it's essential to acknowledge that responsible adult vapers represent a significant portion 6% of the population, or 300,000 voters! These individuals have made a conscious choice to switch from smoking to vaping as a harm reduction strategy. By restricting access to flavored ecigarettes, you risk alienating this voting age population.\nInstead of an outright ban, I urge you to consider implementing stricter enforcement of existing age restrictions and implementing measures to prevent underage access to vaping products. Education and enforcement campaigns aimed at both parents and retailers can help ensure that minors do not have access to these products while still allowing adult smokers to access the harm reduction potential of vaping.\nAdditionally, I encourage you to explore policies that support harm reduction strategies, such as promoting the use of nicotine replacement therapies and encouraging smokers to switch to less harmful alternatives like vaping. This approach would prioritize public health outcomes while respecting the rights of adult consumers and supporting small businesses within our state.\nIn conclusion, I respectfully urge you to reconsider your support for the flavor ban on ecigarettes. Instead, I urge you to pursue evidencebased policies that balance the protection of youth with the needs of adult consumers and small businesses. Thank you for considering my perspective on this important issue.\nSincerely,\n\n_FIRSTNAME_ _LASTNAME_",
+        "_FIRSTNAME_ _LASTNAME_\n\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\nDears,\nFlavored Vaporizers are a Smoking Cessation Aid\nFlavored vaporizers offer many flavors. These options make vaping more appealing to smokers who are trying to quit traditional tobacco. The allure of flavors act as a positive reinforcement, encouraging smokers to transition away from cigarettes.\nWhile not entirely risk free, vaping is known to be less harmful than smoking traditional cigarettes. Flavored vaporizers provide an alternative for smokers who want to reduce their exposure to harmful chemicals found in tobacco smoke.\nQuitting smoking is not just about nicotine addiction; it's also about breaking the habitual behavior associated with smoking. Flavored vaporizers mimic the hand to mouth action and inhaling process, making the transition from cigarettes smoother.\nSome smokers find it challenging to quit cold turkey. Flavored vaporizers allow us to gradually reduce nicotine levels by choosing lowernicotine eliquids. This stepwise approach can lead to successful smoking cessation.\nNumerous anecdotal accounts exist of smokers successfully quitting tobacco by switching to flavored vaporizers. My personal experience confirmed that flavored vaping products is an effective tool for smoking cessation.\nCritics argue that flavored vaporizers attract youth to vaping. However, regulations can strike a balance by restricting access to minors while allowing adults to make informed choices. Age verification measures and strict sales practices do prevent underage use without penalizing adult smokers.\nIn summary, flavored vaporizers offer a promising pathway for smokers seeking to quit tobacco. By allowing adults access to these products, we can promote harm reduction and support those on their journey toward a smoke free life. \nSincerely,\n\n_FIRSTNAME_ _LASTNAME_",
+        "_DATE_\n_FIRSTNAME_ _LASTNAME_\n\n_STREETADDRESS_\n_ADDRESS_\n\nDears,\nAs a vaporizer customer, I am deeply concerned about the potential implications of statewide laws prohibiting flavored tobacco and vaping products. I believe that such legislation overlooks the significant role that flavored products play in harm reduction efforts, for individuals like myself who are using vaping as a means to quit smoking traditional tobacco cigarettes.\nAs someone who has struggled with smoking addiction, I can personally attest to the effectiveness of flavored ecigarettes in reducing cravings and gradually weaning off nicotine dependence. Restricting access to these products could impede progress towards a smoke free lifestyle for many of us who rely on them as a less harmful alternative.\nFlavored vaping products offer a wide variety of options that cater to different tastes and preferences. This diversity is crucial in ensuring that we have access to products that resonate with them and keep them engaged in their journey to quit smoking. Whether it's menthol, mint or wintergreen flavors, having choices available enables the success in transitioning away from traditional tobacco cigarettes.\nAdults should have the autonomy to make informed choices about their own health and well being. Prohibiting flavored tobacco and vaping products infringes upon this fundamental right and limits the options available to many of us seeking alternatives to smoking. Research has shown that vaping is generally less harmful than smoking traditional tobacco cigarettes.\nProhibiting flavored products could have detrimental effects on businesses within this industry, leading to job losses and economic downturns in communities that rely on these businesses for employment and revenue.\nIn conclusion, as a vaporizer customer who has personally benefited from flavored tobacco and vaping products in my journey to quit smoking, I strongly advocate against statewide laws prohibiting these products. Instead, policymakers should prioritize harm reduction, consumer choice, and evidencebased approaches to public health that support individuals in their efforts to lead healthier lives.\nThank you for considering the perspectives of vaporizer customers like myself in this important policy discussion. \nSincerely,\n\n_FIRSTNAME_ _LASTNAME_",
+		"_DATE_\n_FIRSTNAME_ _LASTNAME_\n\n_STREETADDRESS_\n_ADDRESS_\n\nRep. Zack Stephenson and members of the Committee\nHouse Commerce Finance and Policy Committee\n\nDear honorable chair and members;\nI am writing to express my strong opposition to Minnesota HF 2177, which seeks to prohibit the sale or offer for sale of flavored tobacco products. As a constituent deeply concerned about the impact of this bill, I urge the committee to reconsider its implications.\nFirstly, Minnesota already imposes a substantial tax of 95% on all tobacco products, contributing significantly to state revenues. Banning flavored tobacco products would not only diminish this revenue stream but also potentially drive consumers to seek these products from unregulated sources, undermining public health goals.\nFurthermore, approximately 300,000 Minnesotans currently use flavored tobacco products. By restricting access to these products, the bill risks pushing users towards more harmful alternatives or the illicit market. Instead of prohibition, policies should focus on harm reduction strategies and education to promote healthier choices.\nMoreover, local businesses, particularly retailers, will be adversely affected by this proposed ban. Small businesses already grappling with economic challenges post-pandemic cannot afford further losses. It is imperative to consider the livelihoods of these establishments and their employees in crafting tobacco regulation.\nIn conclusion, while I support efforts to protect public health, HF 2177 overlooks the complexities of tobacco regulation. I urge the committee to prioritize evidence based approaches that balance public health concerns with economic realities and individual freedoms.\nThank you for considering my perspective on this crucial matter.\nSincerely,\n\n_FIRSTNAME_ _LASTNAME_",
+		"_FIRSTNAME_ _LASTNAME_\n\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\nHonorable committee members\nAs a concerned citizen and constituent, I urge you to reconsider Minnesota HF 2177, which aims to prohibit the sale of flavored tobacco products. While I appreciate the state's commitment to public health, this bill has significant implications for both our community and local businesses.\n1. Personal Choice and Health Equity:\nMinnesota's diverse population includes approximately 300,000 individuals who use flavored tobacco products. Banning these products limits their choices and disproportionately affects certain communities. We must strike a balance between health objectives and individual freedoms.\n2. Economic Impact on Small Businesses:\nOur local retailers, already burdened by high taxes (Minnesota taxes all tobacco at 95%), face additional challenges. Banning flavored products would significantly impact their revenue. Small businesses are the backbone of our community, and we must consider their livelihoods.\n3. Unintended Consequences:\nProhibiting flavored tobacco may drive consumers toward unregulated sources or more harmful alternatives. We should avoid unintended consequences that undermine public health goals.\n4. Collaborative Solutions:\nLet's explore evidence based alternatives that address health concerns without harming local businesses. I am ready to collaborate and find a balanced approach.\nThank you for considering my perspective. Let's protect choice, support our community, and ensure a thriving economy.\n\nSincerely,\n\n_FIRSTNAME_ _LASTNAME_",
+		"_FIRSTNAME_ _LASTNAME_\n\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\nHouse Commerce Finance and Policy Committee\n\nCommittee Chair and Members\nI am writing to express my deep reservations regarding Minnesota HF 2177, which seeks to prohibit the sale or offer for sale of flavored tobacco products. While I understand the importance of public health initiatives, I believe this bill may inadvertently infringe upon individual freedoms and exacerbate existing socioeconomic disparities.\nIt is essential to acknowledge the significant impact of flavored tobacco products on marginalized communities, particularly youth and low-income individuals. However, outright prohibition risks criminalizing individuals rather than addressing the root causes of tobacco addiction. Instead, resources should be directed towards education, prevention, and support services to empower individuals to make informed choices about their health.\nMoreover, I am concerned about the potential repercussions on small businesses, many of which are owned by minority entrepreneurs. Imposing further restrictions on flavored tobacco products could disproportionately harm these businesses, exacerbating economic inequalities within our communities.\nFurthermore, it is crucial to consider the unintended consequences of prohibition, such as the proliferation of illicit markets and the criminalization of marginalized individuals. Rather than punitive measures, we should prioritize evidence-based approaches that address the underlying factors contributing to tobacco use while respecting individual autonomy and economic livelihoods.\nIn conclusion, I urge the committee to reconsider HF 2177 and explore alternative strategies that promote public health without disproportionately burdening vulnerable communities or stifling economic opportunity. Let us work together to craft policies that uphold our values of equity, justice, and individual freedom.\nThank you for considering my perspective on this important issue.\nSincerely,\n\n_FIRSTNAME_ _LASTNAME_"
+    ];
+
+
+    const randomIndex = Math.floor(Math.random() * paragraphs.length);
+    let selectedParagraph = paragraphs[randomIndex];
+
+    selectedParagraph = selectedParagraph.replace("_FIRSTNAME_", firstName);
+    selectedParagraph = selectedParagraph.replace("_LASTNAME_", lastName);
+    selectedParagraph = selectedParagraph.replace("_STREETADDRESS_", streetAddress);
+    selectedParagraph = selectedParagraph.replace("_ADDRESS_", address);
+	selectedParagraph = selectedParagraph.replace("_FIRSTNAME_", firstName);
+    selectedParagraph = selectedParagraph.replace("_LASTNAME_", lastName);
+	let currentDate = new Date();
+    let year = currentDate.getFullYear();
+	let month = currentDate.getMonth(); 
+	let day = currentDate.getDate();
+
+    selectedParagraph = selectedParagraph.replace("_DATE_", (month+1)+"/"+day+"/"+year);
+
+
+            // Assuming `docx` library is available
+
+const { Document, Packer, Paragraph, TextRun  } = docx;
+
+
+
+
+
+// Create a new document
+const doc = new Document({
+    sections: [{
+        properties: {},
+        children: selectedParagraph.split("\n").map(paragraphText => new Paragraph({
+                children: [
+                    new TextRun({
+                        text: paragraphText,
+                        size: 28, // Example of even smaller text (10pt)
+                    }),
+                ],
+            })),
+    }],
+});
+
+// Use Packer to create a Blob from the document
+Packer.toBlob(doc).then(blob => {
+    // Use the same approach as before to create a download link
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "Written Testimony in opposition of HF 2177.docx";
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}).catch(err => console.error(err));
+
+
+    // const fileName = "Written Testimony in opposition of HF 2177.doc";
+
+    // const blob = new Blob([selectedParagraph], { type: "text/plain;charset=utf-8" });
+
+    // const downloadLink = document.createElement("a");
+    // downloadLink.href = URL.createObjectURL(blob);
+    // downloadLink.download = fileName;
+
+    // document.body.appendChild(downloadLink);
+    // downloadLink.click();
+    // document.body.removeChild(downloadLink);
+	sendMail();
+
+}
+function sendMail() {
+
+    const emailtitles =["Here is my written testimony opposing HF 2177.","I am submitting this written statement to express my opposition to HF 2177.","My written testimony outlines my objections to HF 2177."];
+    const randomEamilIndex = Math.floor(Math.random() * emailtitles.length);
+    let selectedEmailTitle = emailtitles[randomEamilIndex];
+
+
+    var email = 'rep.zack.stephenson@house.mn.gov, rep.carlie.kotyza-witthuhn@house.mn.gov, rep.tim.odriscoll@house.mn.gov, rep.robert.bierman@house.mn.gov, rep.ethan.cha@house.mn.gov, rep.jeff.dotseth@house.mn.gov, rep.mike.freiberg@house.mn.gov, rep.ginny.klevorn@house.mn.gov, rep.erin.koegel@house.mn.gov, rep.larry.kraft@house.mn.gov, rep.tina.liebling@house.mn.gov, rep.anne.neu@house.mn.gov, rep.harry.niska@house.mn.gov, rep.bernie.perryman@house.mn.gov, rep.brian.pfarr@house.'; // The email address to send to
+    var subject = encodeURIComponent(selectedEmailTitle); // The subject of the email
+    var body = encodeURIComponent('Enclosed is my written testimony for inclusion in the committee\'s records.'); // The body of the email
+    var bcc = 'stopmnflavorban@gmail.com'; // The BCC recipient
+
+    // Creating the mailto link
+    var mailtoLink = `mailto:${email}?bcc=${bcc}&subject=${subject}&body=${body}`;
+
+    // Setting window.location.href to the mailto link
+    window.location.href = mailtoLink;
+}
+</script>
+
+</body>
+</html>

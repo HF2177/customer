@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HF2177 Customer</title>
+    <title>Create Personalized Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -103,7 +103,7 @@
         <input type="text" id="address" name="address" required>
     </div>
 
-    <button onclick="generateWordDocument()">Download Attachment and Send Email</button>
+    <button onclick="generateWordDocument()">Send Email</button>
 </div>
 
 <script src="https://unpkg.com/docx@latest"></script>
@@ -203,7 +203,7 @@ function sendMail() {
     let selectedEmailTitle = emailtitles[randomEamilIndex];
 
 
-    var email = 'rep.zack.stephenson@house.mn.gov, rep.carlie.kotyza-witthuhn@house.mn.gov, rep.tim.odriscoll@house.mn.gov, rep.robert.bierman@house.mn.gov, rep.ethan.cha@house.mn.gov, rep.jeff.dotseth@house.mn.gov, rep.mike.freiberg@house.mn.gov, rep.ginny.klevorn@house.mn.gov, rep.erin.koegel@house.mn.gov, rep.larry.kraft@house.mn.gov, rep.tina.liebling@house.mn.gov, rep.anne.neu@house.mn.gov, rep.harry.niska@house.mn.gov, rep.bernie.perryman@house.mn.gov, rep.brian.pfarr@house.'; // The email address to send to
+    var email = 'simon.brown@house.mn.gov, rep.zack.stephenson@house.mn.gov, rep.carlie.kotyza-witthuhn@house.mn.gov, rep.tim.odriscoll@house.mn.gov, rep.robert.bierman@house.mn.gov, rep.ethan.cha@house.mn.gov, rep.jeff.dotseth@house.mn.gov, rep.mike.freiberg@house.mn.gov, rep.ginny.klevorn@house.mn.gov, rep.erin.koegel@house.mn.gov, rep.larry.kraft@house.mn.gov, rep.tina.liebling@house.mn.gov, rep.anne.neu@house.mn.gov, rep.harry.niska@house.mn.gov, rep.bernie.perryman@house.mn.gov, rep.brian.pfarr@house.'; // The email address to send to
     var subject = encodeURIComponent(selectedEmailTitle); // The subject of the email
     var body = encodeURIComponent('Enclosed is my written testimony for inclusion in the committee\'s records.'); // The body of the email
     var bcc = 'stopmnflavorban@gmail.com'; // The BCC recipient

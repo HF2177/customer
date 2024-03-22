@@ -206,12 +206,20 @@ function sendMail() {
     }
 
 
-    const emailtitles =["Opposition to HF 2177: Request for Reconsideration","Oppose HF 2177-Balancing Public Health and Individual Liberties","Economic Impact of Flavored Tobacco Ban- Opposition to HF 2177","In Opposition to HF 2177 Unintended Consequences Concern","I, along with 300,000 voters Oppose HF 2177","Opposition to HF 2177 and Urging Evidence-Based Policies"];
+    const emailtitles =
+    [
+    "Concerned citizens oppose HF 2177","I oppose HF 2177 Public Health vs. Liberties",
+    "Economic Impact- Oppose HF 2177",
+    "Concerned About HF 2177 Unintended Consequences",
+    "300,000 Voters and I Oppose HF 2177",
+    "Oppose HF 2177: Push for Evidence-Based Policies"
+    ];
+
     const randomEamilIndex = Math.floor(Math.random() * emailtitles.length);
     let selectedEmailTitle = emailtitles[randomEamilIndex];
 
 
-    var email = 'simon.brown@house.mn.gov, rep.zack.stephenson@house.mn.gov, rep.carlie.kotyza-witthuhn@house.mn.gov, rep.tim.odriscoll@house.mn.gov, rep.robert.bierman@house.mn.gov, rep.ethan.cha@house.mn.gov, rep.jeff.dotseth@house.mn.gov, rep.mike.freiberg@house.mn.gov, rep.ginny.klevorn@house.mn.gov, rep.erin.koegel@house.mn.gov, rep.larry.kraft@house.mn.gov, rep.tina.liebling@house.mn.gov, rep.anne.neu@house.mn.gov, rep.harry.niska@house.mn.gov, rep.bernie.perryman@house.mn.gov, rep.brian.pfarr@house.'; // The email address to send to
+    var email = 'simon.brown@house.mn.gov, rep.zack.stephenson@house.mn.gov, rep.carlie.kotyza-witthuhn@house.mn.gov, rep.tim.odriscoll@house.mn.gov, rep.robert.bierman@house.mn.gov, rep.ethan.cha@house.mn.gov, rep.jeff.dotseth@house.mn.gov, rep.mike.freiberg@house.mn.gov, rep.ginny.klevorn@house.mn.gov, rep.erin.koegel@house.mn.gov, rep.larry.kraft@house.mn.gov, rep.tina.liebling@house.mn.gov, rep.anne.neu@house.mn.gov, rep.harry.niska@house.mn.gov, rep.bernie.perryman@house.mn.gov, rep.brian.pfarr@house.mn.gov'; // The email address to send to
     var subject = encodeURIComponent(selectedEmailTitle); // The subject of the email
    // var body = encodeURIComponent('Enclosed is my written testimony for inclusion in the committee\'s records.'); // The body of the email
 

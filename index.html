@@ -170,16 +170,16 @@ const doc = new Document({
 });
 
 // Use Packer to create a Blob from the document
-Packer.toBlob(doc).then(blob => {
-    // Use the same approach as before to create a download link
-    const downloadLink = document.createElement("a");
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = "Written Testimony in opposition of HF 2177.docx";
+// Packer.toBlob(doc).then(blob => {
+//     // Use the same approach as before to create a download link
+//     const downloadLink = document.createElement("a");
+//     downloadLink.href = URL.createObjectURL(blob);
+//     downloadLink.download = "Written Testimony in opposition of HF 2177.docx";
 
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-}).catch(err => console.error(err));
+//     document.body.appendChild(downloadLink);
+//     downloadLink.click();
+//     document.body.removeChild(downloadLink);
+// }).catch(err => console.error(err));
 
 
     // const fileName = "Written Testimony in opposition of HF 2177.doc";
@@ -197,15 +197,52 @@ Packer.toBlob(doc).then(blob => {
 
 }
 function sendMail() {
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const streetAddress =  document.getElementById("streetAddress").value.trim();
+    if (!firstName || !lastName || !address || !streetAddress) {
+        alert("Please fill in all the fields.");
+        return;
+    }
 
-    const emailtitles =["Here is my written testimony opposing HF 2177.","I am submitting this written statement to express my opposition to HF 2177.","My written testimony outlines my objections to HF 2177."];
+
+    const emailtitles =["Opposition to HF 2177: Request for Reconsideration","Oppose HF 2177-Balancing Public Health and Individual Liberties","Economic Impact of Flavored Tobacco Ban- Opposition to HF 2177","In Opposition to HF 2177 Unintended Consequences Concern","I, along with 300,000 voters Oppose HF 2177","Opposition to HF 2177 and Urging Evidence-Based Policies"];
     const randomEamilIndex = Math.floor(Math.random() * emailtitles.length);
     let selectedEmailTitle = emailtitles[randomEamilIndex];
 
 
     var email = 'simon.brown@house.mn.gov, rep.zack.stephenson@house.mn.gov, rep.carlie.kotyza-witthuhn@house.mn.gov, rep.tim.odriscoll@house.mn.gov, rep.robert.bierman@house.mn.gov, rep.ethan.cha@house.mn.gov, rep.jeff.dotseth@house.mn.gov, rep.mike.freiberg@house.mn.gov, rep.ginny.klevorn@house.mn.gov, rep.erin.koegel@house.mn.gov, rep.larry.kraft@house.mn.gov, rep.tina.liebling@house.mn.gov, rep.anne.neu@house.mn.gov, rep.harry.niska@house.mn.gov, rep.bernie.perryman@house.mn.gov, rep.brian.pfarr@house.'; // The email address to send to
     var subject = encodeURIComponent(selectedEmailTitle); // The subject of the email
-    var body = encodeURIComponent('Enclosed is my written testimony for inclusion in the committee\'s records.'); // The body of the email
+   // var body = encodeURIComponent('Enclosed is my written testimony for inclusion in the committee\'s records.'); // The body of the email
+
+   const paragraphs = [
+    "_FIRSTNAME_ _LASTNAME_\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\n\nAs a vaporizer customer, I'm deeply concerned about statewide laws banning flavored tobacco and vaping items. These laws overlook flavored products' vital role in harm reduction for individuals using vaping to quit smoking. Flavored e-cigarettes effectively reduce cravings and help wean off nicotine. Restricting them could hinder progress toward a smoke-free life. Flavored vaping products offer diverse options crucial for engagement and success in quitting. Adults should choose their health options; banning flavors infringes on this right and harms businesses and communities. Instead, policymakers should prioritize harm reduction and consumer choice.\n\n_FIRSTNAME_ _LASTNAME_",
+    "_FIRSTNAME_ _LASTNAME_\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\n\nDear honorable chair and members,\nI strongly oppose Minnesota HF 2177, which bans flavored tobacco products. This bill overlooks crucial aspects:\n\n1.MN already taxes tobacco heavily, contributing to state revenue.\n2.Banning flavors may drive consumers to unregulated sources, harming public health goals.\n3.About 300,000 Minnesotans use flavored tobacco; banning it may lead to riskier alternatives or the illicit market.\n4.Local businesses, especially retailers, will suffer losses, impacting post-pandemic economic recovery.\n\nI support public health but urge evidence-based, balanced approaches. Please reconsider HF 2177's implications.\n\n_FIRSTNAME_ _LASTNAME_",
+    "_FIRSTNAME_ _LASTNAME_\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\n\nHonorable committee members,\nI urge reconsideration of MN HF 2177 banning flavored tobacco sales. It limits choice for 300,000 users, burdens small businesses already taxed at 95%, and may lead to unintended consequences like pushing consumers to unregulated markets. Let's collaborate for evidence-based, balanced solutions that support health and local economies.\nThank you for your consideration.\n\n_FIRSTNAME_ _LASTNAME_",
+    "_FIRSTNAME_ _LASTNAME_\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\n\nI express deep reservations about Minnesota HF 2177, aiming to ban flavored tobacco sales, as it could infringe on individual freedoms and worsen socioeconomic disparities. While acknowledging flavored tobacco's impact, I argue that prohibition might criminalize rather than address addiction, advocating instead for education and support services. Concerns also arise regarding impacts on minority-owned small businesses and unintended consequences like illicit markets. I urge the committee to reconsider and pursue evidence-based, equitable policies respecting autonomy and economic well-being while promoting public health.\n\n_FIRSTNAME_ _LASTNAME_",
+    "_FIRSTNAME_ _LASTNAME_\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\n\nI write to express concern about the proposed flavor ban on e-cigarettes and urge reconsideration of support for such a measure. While I acknowledge the intent to address youth vaping, I believe there are better solutions that can achieve this goal without impeding responsible adult users or harming small businesses. Banning flavors risks pushing adults back to more harmful traditional cigarettes, as flavors are integral to smoking cessation efforts. Responsible adult vapers constitute a significant voting demographic and should not be alienated. Instead, stricter enforcement of age restrictions and education campaigns can prevent underage access while supporting harm reduction strategies and respecting adult consumers' rights and small businesses' interests. I urge evidence-based policies that balance youth protection with adult freedoms.\n\n_FIRSTNAME_ _LASTNAME_",
+    "_FIRSTNAME_ _LASTNAME_\n_STREETADDRESS_\n_ADDRESS_\n_DATE_\n\n\nAs a vaporizer customer, I am deeply concerned about statewide laws banning flavored tobacco and vaping products, as they overlook the crucial role these products play in harm reduction. Flavored e-cigarettes have been effective in reducing cravings and aiding in nicotine dependence cessation, essential for those transitioning from traditional tobacco cigarettes. Prohibiting flavored options limits choices vital for success in quitting smoking, infringing on adults' autonomy to make informed health decisions. Moreover, such bans could harm businesses, leading to job losses and economic downturns in communities. Instead of prohibition, policymakers should prioritize harm reduction, consumer choice, and evidence-based public health approaches to support individuals in leading healthier lives.\n\n_FIRSTNAME_ _LASTNAME_"
+];
+   const randomBodyIndex = Math.floor(Math.random() * paragraphs.length);
+    let selectedParagraph = paragraphs[randomBodyIndex];
+    selectedParagraph = selectedParagraph.replace("_FIRSTNAME_", firstName);
+    selectedParagraph = selectedParagraph.replace("_LASTNAME_", lastName);
+    selectedParagraph = selectedParagraph.replace("_STREETADDRESS_", streetAddress);
+    selectedParagraph = selectedParagraph.replace("_ADDRESS_", address);
+    selectedParagraph = selectedParagraph.replace("_FIRSTNAME_", firstName);
+    selectedParagraph = selectedParagraph.replace("_LASTNAME_", lastName);
+    let currentDate = new Date();
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth(); 
+    let day = currentDate.getDate();
+
+
+    selectedParagraph = selectedParagraph.replace("_DATE_", (month+1)+"/"+day+"/"+year);
+    console.log(selectedParagraph)
+
+    var body = encodeURIComponent(selectedParagraph); // The body of the email
+
     var bcc = 'stopmnflavorban@gmail.com'; // The BCC recipient
 
     // Creating the mailto link
